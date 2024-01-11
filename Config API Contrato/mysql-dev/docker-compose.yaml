@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  contrato-dev-mysql:
+    image: mysql:8.2.0
+    container_name: contrato-dev-mysql
+    environment:
+      - TZ=UTC
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=contratos_dev
+    ports:
+      - 3307:3306
+    restart: always
+    volumes:
+      - ./vol-db:/var/lib/mysql
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
