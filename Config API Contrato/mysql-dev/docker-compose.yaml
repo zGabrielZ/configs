@@ -6,7 +6,7 @@ services:
     environment:
       - TZ=UTC
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=contratos_dev
+      - MYSQL_DATABASE=contrato_dev
     ports:
       - 3307:3306
     restart: always
