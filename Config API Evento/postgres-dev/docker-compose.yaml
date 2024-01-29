@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  evento-dev-postgres:
+    image: postgres:14.3
+    container_name: evento-dev-postgres
+    environment:
+      - TZ=UTC
+      - POSTGRES_USER=gabriel
+      - POSTGRES_PASSWORD=gabriel
+      - POSTGRES_DB=evento-dev
+    ports:
+      - 5000:5432
+    restart: always
+    volumes:
+      - ./vol-db:/var/lib/postgresql/data
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
