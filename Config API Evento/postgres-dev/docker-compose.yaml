@@ -13,6 +13,7 @@ services:
     restart: always
     volumes:
       - ./vol-db:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - backend
 networks:
