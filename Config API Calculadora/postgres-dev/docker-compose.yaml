@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  calculadora-dev-postgres:
+    image: postgres:14.3
+    container_name: calculadora-dev-postgres
+    environment:
+      - TZ=UTC
+      - POSTGRES_USER=gabriel
+      - POSTGRES_PASSWORD=gabriel
+      - POSTGRES_DB=calculadora-dev
+    ports:
+      - 5000:5432
+    restart: always
+    volumes:
+      - ./vol-db:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
