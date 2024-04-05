@@ -1,0 +1,59 @@
+server:
+  port: 8082
+  servlet:
+    context-path: '/ead-course/'
+
+spring:
+  application:
+    name: ead-course-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ead-course?currentSchema=public
+    username: postgres
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+  output:
+    ansi:
+      enabled: ALWAYS
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: gabriel
+    password: gabriel
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+request:
+  uri:
+    user: http://ead-authuser-service/ead-authuser
+
+broker:
+  exchange:
+    user:
+      event: ead.userevent
+  queue:
+    user:
+      event: ead.userevent.ms.course
+
+authuser:
+  refreshscope:
+    name: Gabriel Ferreira
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
