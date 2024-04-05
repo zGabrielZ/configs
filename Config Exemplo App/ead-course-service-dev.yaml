@@ -46,7 +46,7 @@ broker:
     user:
       event: ead.userevent.ms.course
 
-authuser:
+course:
   refreshscope:
     name: Gabriel Ferreira
 
