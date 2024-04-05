@@ -43,6 +43,18 @@ broker:
     user:
       event: ead.userevent
 
+authuser:
+  refreshscope:
+    name: Gabriel Ferreira
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
+
 resilience4j:
   circuitbreaker:
     instances:
