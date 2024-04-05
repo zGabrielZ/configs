@@ -45,7 +45,7 @@ broker:
 
 authuser:
   refreshscope:
-    name: Gabriel Ferreira Teste
+    name: Gabriel Ferreira
 
 management:
   endpoints:
