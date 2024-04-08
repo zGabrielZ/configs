@@ -42,6 +42,11 @@ broker:
   exchange:
     user:
       event: ead.userevent
+    notification:
+      command: ead.notificationcommand
+  key:
+    notification:
+      command: ead.notificationcommand.ms.notificationk
   queue:
     user:
       event: ead.userevent.ms.course
