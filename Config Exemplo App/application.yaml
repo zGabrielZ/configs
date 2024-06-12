@@ -3,6 +3,9 @@ ead:
     registry:
       username: serviceregistry
       password: ead123sr
+  auth:
+    jwtSecret: D`5xc=Y%X}[yua9@V+Unz7r&H'{/b8[L?2M]4}=Rem_nt)V;/8wk&(GBJaHN+mx^-q
+    jwtExpiration: 14400000 #4 horas em milisegundo
 
 eureka:
   client:
