@@ -7,7 +7,6 @@ services:
       - TZ=UTC
       - POSTGRES_USER=gabriel
       - POSTGRES_PASSWORD=gabriel
-      - POSTGRES_DB=produto-dev
     ports:
       - 5000:5432
     restart: always
