@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  usuario-dev-redis:
+    image: redis:7.2.2
+    container_name: usuario-dev-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./vol-data:/data
+    networks:
+      - backend
+
+  usuario-dev-redis-insight:
+    image: redislabs/redisinsight:latest
+    container_name: usuario-dev-redis-insight
+    ports:
+      - 5540:5540
+    depends_on:
+      - usuario-dev-redis
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
