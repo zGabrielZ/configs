@@ -9,7 +9,6 @@ services:
       - MYSQL_DATABASE=contrato_dev
     ports:
       - 3307:3306
-    restart: always
     volumes:
       - ./vol-db:/var/lib/mysql
     networks:
