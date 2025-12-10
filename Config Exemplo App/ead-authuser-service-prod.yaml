@@ -1,0 +1,69 @@
+server:
+  port: ${PORT}
+  servlet:
+    context-path: '/ead-authuser/'
+
+spring:
+  application:
+    name: ead-authuser-service
+  datasource:
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+request:
+  uri:
+    course: http://ead-course-service/ead-course
+
+broker:
+  exchange:
+    user:
+      event: ead.userevent
+
+authuser:
+  refreshscope:
+    name: Gabriel Ferreira
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuitbreakerInstance: # Nome da instancia
+        slidingWindowSize: 30 # Tamanho da janela verificar se tem falha ou ok na requisicao
+        permittedNumberOfCallsInHalfOpenState: 2 # Limite de chamada quando o estado tiver meio aberto, vai fazer duas chamadas em meioa aberto
+        slidingWindowType: TIME_BASED # Dois tipos de config, uma eh contagem e outra eh tempo
+        minimumNumberOfCalls: 2 # Limite de duas chamadas
+        waitDurationInOpenState: 30s # Periodo do estado aberto
+        failureRateThreshold: 80 # Taxa de falha de 80%, se tiver mais de 80% de falha, o cb vai ser de fechado para aberto
+  retry:
+    instances:
+      retryInstance: # Nome da instancia
+        maxAttempts: 3 # Limite maxima de tentativa
+        waitDuration: 5s # Vai esperar 5s para realizar a proxima
