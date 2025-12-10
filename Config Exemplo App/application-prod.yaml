@@ -1,0 +1,16 @@
+ead:
+  service:
+    registry:
+      username: serviceregistryprod
+      password: '{cipher}99b8cb7f51f6d41e3dc4bd8eceacb32815e6d821a68cca045b0cfb1a7279582a' ## Senha criptografada para o ambiente de produção, mas essa aplicação não está no ar
+  auth:
+    jwtSecret: '{cipher}f9a79123c0dbfdf22b1268feb22558a4982050431e57c57494459768079b64c0' ## Senha criptografada para o ambiente de produção, mas essa aplicação não está no ar
+    jwtExpiration: 14400000 #4 horas em milisegundo
+
+eureka:
+  client:
+    service-url:
+      defaultZone: 'http://${ead.service.registry.username}:${ead.service.registry.password}@ead-serviceregistry-prod/eureka' ## URL do serviço Eureka para o ambiente de produção mas essa aplicação não está no ar
+  instance:
+    hostname: ${APP_DOMAIN_NAME}
+    non-secure-port: 80
