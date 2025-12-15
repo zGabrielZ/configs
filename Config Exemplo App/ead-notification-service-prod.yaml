@@ -1,0 +1,55 @@
+server:
+  port: ${PORT}
+  servlet:
+    context-path: '/ead-notification/'
+
+spring:
+  application:
+    name: ead-notification-service
+  datasource:
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+notification:
+  refreshscope:
+    name: Gabriel Ferreira
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
+
+broker:
+  exchange:
+    notification:
+      command: ead.notificationcommand
+  key:
+    notification:
+      command: ead.notificationcommand.ms.notificationk
+  queue:
+    notification:
+      command: ead.notificationcommand.ms.notification
