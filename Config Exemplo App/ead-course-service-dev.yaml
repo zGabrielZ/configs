@@ -29,10 +29,14 @@ spring:
 
 logging:
   level:
-    com.ead: TRACE
+    com.ead: INFO
     root: INFO
-    org.springframework.web: DEBUG
+    org.springframework.web: INFO
     org.hibernate: INFO
+#    com.ead: TRACE
+#    root: INFO
+#    org.springframework.web: DEBUG
+#    org.hibernate: INFO
 
 request:
   uri:
