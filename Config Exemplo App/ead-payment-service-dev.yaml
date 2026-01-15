@@ -27,6 +27,14 @@ spring:
     username: gabriel
     password: gabriel
 
+broker:
+  exchange:
+    user:
+      event: ead.userevent
+  queue:
+    user:
+      event: ead.userevent.ms.payment
+
 logging:
   level:
 #    com.ead: INFO

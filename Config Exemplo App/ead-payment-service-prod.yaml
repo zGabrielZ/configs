@@ -24,6 +24,14 @@ spring:
     username: ${RABBITMQ_USERNAME}
     password: ${RABBITMQ_PASSWORD}
 
+broker:
+  exchange:
+    user:
+      event: ead.userevent
+  queue:
+    user:
+      event: ead.userevent.ms.payment
+
 logging:
   level:
     com.ead: TRACE
