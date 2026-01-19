@@ -28,9 +28,13 @@ broker:
   exchange:
     user:
       event: ead.userevent
+    payment:
+      command: ead.paymentcommand
   queue:
     user:
       event: ead.userevent.ms.payment
+    payment:
+      command: ead.paymentcommand.ms.payment
 
 logging:
   level:
