@@ -38,6 +38,9 @@ broker:
       event: ead.userevent.ms.payment
     payment:
       command: ead.paymentcommand.ms.payment
+  key:
+    payment:
+      command: ead.paymentcommand.key.ms.payment
 
 logging:
   level:
