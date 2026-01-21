@@ -41,6 +41,8 @@ broker:
   key:
     payment:
       command: ead.paymentcommand.key.ms.payment
+  stripe:
+    api-key: ${API_KEY_DEV:api_key_test}
 
 logging:
   level:
