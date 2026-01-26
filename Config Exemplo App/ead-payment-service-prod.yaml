@@ -30,6 +30,7 @@ broker:
       event: ead.userevent
     payment:
       command: ead.paymentcommand
+      event: ead.paymentevent
   queue:
     user:
       event: ead.userevent.ms.payment
@@ -39,7 +40,7 @@ broker:
     payment:
       command: ead.paymentcommand.key.ms.payment
   stripe:
-    api-key: ${API_KEY}
+    api-key: ${API_KEY_DEV}
 
 logging:
   level:

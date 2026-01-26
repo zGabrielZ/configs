@@ -33,6 +33,7 @@ broker:
       event: ead.userevent
     payment:
       command: ead.paymentcommand
+      event: ead.paymentevent
   queue:
     user:
       event: ead.userevent.ms.payment
