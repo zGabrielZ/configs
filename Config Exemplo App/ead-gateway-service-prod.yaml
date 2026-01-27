@@ -6,6 +6,10 @@ spring:
     gateway:
       mvc:
         routes:
+          - id: payment-service
+            uri: lb://EAD-PAYMENT-SERVICE
+            predicates:
+              - Path=/ead-payment/**
           - id: authuser-service
             uri: lb://EAD-AUTHUSER-SERVICE
             predicates:
